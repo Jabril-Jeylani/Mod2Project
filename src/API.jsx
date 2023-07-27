@@ -4,19 +4,31 @@ export default function API() {
     const [stockReport, setStockReport] = useState({})
 
     useEffect(() => {
-        fetchStocks()
+        if (window.localStorage !== undefined) {
+            const data = window.localStorage.getItem('user')
+            data !== null ? setStockReport(JSON.parse(data)) : null
+        }
+        // fetchStocks()
     }, [])
     
     async function fetchStocks() {
-        let key = 'DNS1IE42GMAAC6CA'
+        let key = import.meta.env.REACT_APP_API_KEY
         let url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${key}`
-
+        try {
         const response = await fetch(url)
         const stockReport = await response.json()
-        console.log(stockReport)
+        localStorage.setItem('user', JSON.stringify(stockReport))
         setStockReport(stockReport)
+        console.log(stockReport)
+        } catch(e) {
+            console.log(e)
+        }
     }
 
+    function deleteStocks() {
+        window.localStorage.removeItem('stockReport')
+        setStockReport({})
+    }
 
 
 
@@ -24,15 +36,14 @@ export default function API() {
     return  (
     <div>
         {/* <h1>{stockReport[ 'Meta Data' ][ '1. Information' ]}</h1> */}
-        <h3>{Object.entries(stockReport).map(([key, subject], i) => (
-            <ol>
-                <li key={i}>{Object.entries(subject).map(([key, subject], i) =>(
-                    <li key={i}>{Object.entries(subject).map(([key, subject]) => (
-                        <li key={i}>key:{key} subject:{subject}</li>
-                    ))}</li>
-                ))}</li>
-            </ol>
-        ))}</h3>
+        <button onClick={fetchStocks}>Call API</button>
+        <button onClick={deleteStocks}>Delete data</button>
+        {/* {stockReport && <pre>{JSON.stringify(stockReport, null, 4)}</pre>} */}
+        <div>{Object.entries(stockReport).map(([key, subject], i) => (
+            <div key={i}>{Object.entries(subject).map(([key, subject], i) =>(
+                <span key={i}>{Object.entries(subject) }</span>
+            ))}</div>
+        ))}</div>
     </div>
     )
 }
