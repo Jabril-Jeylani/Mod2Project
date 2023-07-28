@@ -6,7 +6,8 @@ export default function API() {
 
     useEffect(() => {
         if (window.localStorage !== undefined) {
-            const data = window.localStorage.getItem('user')
+            const data = window.localStorage.getItem('stockReport')
+            console.log('Data from Local Storage:', JSON.parse(data))
             data !== null ? setStockReport(JSON.parse(data)) : null
         }
     }, [])
@@ -17,7 +18,9 @@ export default function API() {
         try {
         const response = await fetch(url)
         const stockReport = await response.json()
-        localStorage.setItem('user', JSON.stringify(stockReport))
+
+        console.log('API Response:', stockReport)
+        localStorage.setItem('stockReport', JSON.stringify(stockReport))
         setStockReport(stockReport)
         console.log(stockReport)
         } catch(e) {
@@ -27,26 +30,36 @@ export default function API() {
 
     function deleteStocks() {
         window.localStorage.removeItem('stockReport')
-        setStockReport(null)
+        // setStockReport(null)
     }
 
-    // const renderInfo = () => {  
-    //     if (stockReport !== undefined) {
-    //         return (
-    //             <div>{Object.entries(stockReport[ 'Meta Data']).map(([key, subject], i) => (
-    //             <div key={i}> {key} {subject}</div>
-    //         ))}</div> 
-    //         )
-    //         }
-    // }
+    const companyInfo = () => { 
+        if (stockReport) {
+            return <div>{Object.entries(stockReport[ 'Meta Data']).map(([key, subject], i) => (
+                <div key={i}> {key} {subject}</div>
+            ))}</div>
+            }
+        else 
+            console.log('Object is falsy')
+            return null
+    }
 
+    const stockInfo = () => {
+        if (stockReport)
+            return <div>{Object.entries(stockReport[ 'Time Series (5min)' ]).map(([key, subject], i) => (
+                    <div key={i}> {key} {subject}</div>
+                ))}</div>
+        else    
+            console.log('stockInfo is falsy')
+            return null
+    }
 
     return  (
     <div>
         {/* buttons to call API and Delete data */}
         <button onClick={fetchStocks}>Call API</button>
         <button onClick={deleteStocks}>Delete data</button>
-        {/* {renderInfo} */}
+        
         
         {/* {<div>stockReport && <pre>{JSON.stringify(stockReport, null, 4)}</pre></div>} */}
         
@@ -58,12 +71,20 @@ export default function API() {
             <div key={i}> {key} {subject}</div>
         ))}</div>} */}
         
+        
+        {companyInfo()}
+        
+        {/* {stockInfo()} */}
+        {/* {<div>{stockReport && Object.entries(stockReport[ 'Time Series (5min)' ]).map(([key, subject], i) => (
+            <div key={i}> {key} {subject}</div>
+        ))}</div>} */}
+
         {/* returns stockReport */}
-        {stockReport && <div>{Object.entries(stockReport).map(([key, subject], i) => (
+        {/* {stockReport && <div>{Object.entries(stockReport).map(([key, subject], i) => (
             <div key={i}>{key} {Object.entries(subject).map(([key, subject], i) => (
                 <p key={i}>{key} {Object.entries(subject) }</p>
             ))}</div>
-        ))}</div>}
+        ))}</div>} */}
 
         {/* <div>{console.log(stockReport['Meta Data'])}</div> */}
         {/* {<div>{stockReport !== 'undefined' ? Object.entries(stockReport['Time Series (5min)']).map(([key, subject], i) => (
@@ -73,4 +94,4 @@ export default function API() {
         
     </div>
     )
-}
+}  
