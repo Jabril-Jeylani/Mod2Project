@@ -30,7 +30,7 @@ export default function API() {
 
     function deleteStocks() {
         window.localStorage.removeItem('stockReport')
-        // setStockReport(null)
+        setStockReport(null)
     }
 
     const companyInfo = () => { 
@@ -46,9 +46,22 @@ export default function API() {
 
     const stockInfo = () => {
         if (stockReport)
-            return <div>{Object.entries(stockReport[ 'Time Series (5min)' ]).map(([key, subject], i) => (
-                    <div key={i}> {key} {subject}</div>
-                ))}</div>
+        return (
+            <div>
+              {Object.entries(stockReport['Time Series (Daily)']).map(
+                ([date, data], i) => (
+                  <div key={i}>
+                    {date}
+                    {Object.entries(data).map(([key, value], index) => (
+                      <div key={index}>
+                        {key}: {value}
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
+            </div>
+          );
         else    
             console.log('stockInfo is falsy')
             return null
@@ -59,39 +72,10 @@ export default function API() {
         {/* buttons to call API and Delete data */}
         <button onClick={fetchStocks}>Call API</button>
         <button onClick={deleteStocks}>Delete data</button>
-        
-        
-        {/* {<div>stockReport && <pre>{JSON.stringify(stockReport, null, 4)}</pre></div>} */}
-        
-        {/* {typeof stockReport !== 'undefined' ? <div>{Object.entries(stockReport[ 'Meta Data']).map(([key, subject], i) => (
-            <div key={i}> {key} {subject}</div>
-        ))}</div> : <p>not rendered</p>} */}
-
-        {/* {<div>{stockReport && Object.entries(stockReport[ 'Meta Data']).map(([key, subject], i) => (
-            <div key={i}> {key} {subject}</div>
-        ))}</div>} */}
-        
-        
-        {companyInfo()}
-        
-        {/* {stockInfo()} */}
-        {/* {<div>{stockReport && Object.entries(stockReport[ 'Time Series (5min)' ]).map(([key, subject], i) => (
-            <div key={i}> {key} {subject}</div>
-        ))}</div>} */}
-
-        {/* returns stockReport */}
-        {/* {stockReport && <div>{Object.entries(stockReport).map(([key, subject], i) => (
-            <div key={i}>{key} {Object.entries(subject).map(([key, subject], i) => (
-                <p key={i}>{key} {Object.entries(subject) }</p>
-            ))}</div>
-        ))}</div>} */}
-
-        {/* <div>{console.log(stockReport['Meta Data'])}</div> */}
-        {/* {<div>{stockReport !== 'undefined' ? Object.entries(stockReport['Time Series (5min)']).map(([key, subject], i) => (
-            <div key={i}> {key} {subject} </div>)) : null}</div>} */}
-
-        
-        
+              
+        {companyInfo()}       
+        {stockInfo()}
+               
     </div>
     )
 }  
