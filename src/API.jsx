@@ -27,7 +27,7 @@ export default function API() {
             data !== null ? setStockReport(JSON.parse(data)) : null;
         }
     }, []);
-    
+    // Line Chart for Open 
     useEffect(() => {
         if (stockReport !== null) {
             const labels = Object.entries(stockReport['Time Series (Daily)']).map((data) => data[0]);
@@ -45,7 +45,7 @@ export default function API() {
             });
         }
       }, [stockReport]);
-
+    // Bar Chart for Volume
       useEffect(() => {
         if (stockReport !== null) {
             const labels = Object.entries(stockReport['Time Series (Daily)']).map((data) => data[0]);
@@ -86,39 +86,21 @@ export default function API() {
     const companyInfo = () => { 
         if (stockReport) {
             return <div>{Object.entries(stockReport[ 'Meta Data']).map(([key, subject], i) => (
-                <div key={i}> {key} {subject}</div>
+                <div key={i}> {subject}</div>
             ))}</div>
             }
         else 
             console.log('Object is falsy')
             return null
     }
-
-    const stockInfo = () => {
-        if (stockReport) {
-            return (
-            <div>
-                {Object.entries(stockReport['Time Series (Daily)']).map(([date, data], i) => (
-                <div key={i}>
-                    {date}
-                    <div>Open: {data['1. open']}</div>
-                    <div>Close: {data['4. close']}</div>
-                </div>
-                ))}
-            </div>
-            );
-        } else {
-            console.log('stockInfo is falsy');
-            return null;
-        }
-    };
-
     return  (
     <div className='dataCharts'>
         {/* buttons to call API and Delete data */}
         <button onClick={fetchStocks}>Call API</button>
         <button onClick={deleteStocks}>Delete data</button>
-
+        {/* Display Company Meta Data */}
+        {companyInfo()} 
+        {/* Render Line and Bar Charts */}
         {userData.labels.length > 0 && ( // Only render if userData has data
         <div className='linechart' style={{width: 1200,
         borderColor: 'green'}}>
@@ -129,10 +111,7 @@ export default function API() {
         <div className='barchart' style={{width: 1200}}>
           <BarChart chartData={userVolume} />
         </div>
-        )}
-        {/* {companyInfo()}       
-        {stockInfo()} */}
-               
+        )}           
     </div>
     )
 }  
