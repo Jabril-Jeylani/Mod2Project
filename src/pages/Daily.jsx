@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 // import { Symbol } from './Symbol'
 
 export default function Stock() {
@@ -7,6 +8,9 @@ export default function Stock() {
     const { Symbol } = useParams()
 
   return (
-    <div>Stock</div>
+    <div>
+      <Navbar />
+      Daily
+    </div>
   )
 }

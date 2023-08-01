@@ -1,8 +1,8 @@
 import React from 'react'
-
+import Navbar from '../components/Navbar'
 function Monthly() {
   return (
-    <div>Monthly</div>
+    <div><Navbar />Monthly</div>
   )
 }
 

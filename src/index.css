@@ -1,0 +1,14 @@
+.dataCharts {
+	display: grid;
+}
+.navbar-buttons {
+	display: flex;
+	margin: 8px;
+}
+
+#h2id {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 16px;
+}
