@@ -1,14 +1,31 @@
 .dataCharts {
 	display: grid;
 }
-.navbar-buttons {
+.navbar-selection {
 	display: flex;
 	margin: 8px;
 }
 
-#h2id {
-	display: flex;
-	justify-content: center;
+.navbar-ul {
+	list-style-type: none;
 	margin: 0;
-	padding: 16px;
+	padding: 0;
+	overflow: hidden;
+	background-color: lightgrey;
+}
+
+#h2id {
+	float: left;
+}
+
+#h2id {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+#h2id:hover {
+	background-color: black;
 }
