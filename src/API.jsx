@@ -37,7 +37,7 @@ export default function API({ url }) {
 	}, []);
 	// Line Chart for Open
 	useEffect(() => {
-		if (stockReport !== null) {
+		if (stockReport !== null && stockReport["Time Series (Daily)"]) {
 			const labels = Object.entries(stockReport["Time Series (Daily)"]).map(
 				(data) => data[0]
 			);
@@ -63,7 +63,7 @@ export default function API({ url }) {
 	// Put a function with the logic inside the useEffect
 	// and pass it through the individual ones with props
 	useEffect(() => {
-		if (stockReport !== null) {
+		if (stockReport !== null && stockReport["Time Series (Daily)"]) {
 			const labels = Object.entries(stockReport["Time Series (Daily)"]).map(
 				(data) => data[0]
 			);
@@ -90,13 +90,16 @@ export default function API({ url }) {
 		try {
 			const response = await fetch(url);
 			const stockReport = await response.json();
-
-			console.log("API Response:", stockReport);
-			localStorage.setItem("stockReport", JSON.stringify(stockReport));
-			setStockReport(stockReport);
-			console.log(stockReport);
+			if ("Error Message" in stockReport) {
+				console.log("API Error:", stockReport["Error Message"]);
+				// Handle the error case here if needed
+			} else {
+				console.log("API Response:", stockReport);
+				localStorage.setItem("stockReport", JSON.stringify(stockReport));
+				setStockReport(stockReport);
+			}
 		} catch (e) {
-			console.log(e);
+			console.log("API Error:", e);
 		}
 	}
 
@@ -106,7 +109,7 @@ export default function API({ url }) {
 	}
 
 	const companyInfo = () => {
-		if (stockReport) {
+		if (stockReport && stockReport["Meta Data"]) {
 			return (
 				<div>
 					{Object.entries(stockReport["Meta Data"]).map(([key, subject], i) => (
@@ -114,8 +117,12 @@ export default function API({ url }) {
 					))}
 				</div>
 			);
-		} else console.log("Object is falsy");
-		return null;
+		} else if (stockReport && "Error Message" in stockReport) {
+			return <div>Error: {stockReport["Error Message"]}</div>;
+		} else {
+			console.log("Object is falsy or contains an error message");
+			return null;
+		}
 	};
 	return (
 		<div>
