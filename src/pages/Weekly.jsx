@@ -1,9 +1,11 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-function Weekly() {
-  return (
-    <div><Navbar />Weekly</div>
-  )
-}
+import React from "react";
+import Navbar from "../components/Navbar";
 
-export default Weekly
+export default function Weekly() {
+	return (
+		<div>
+			<Navbar />
+			Weekly
+		</div>
+	);
+}

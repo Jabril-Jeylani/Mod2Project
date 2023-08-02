@@ -1,9 +1,10 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-function Monthly() {
-  return (
-    <div><Navbar />Monthly</div>
-  )
+import React from "react";
+import Navbar from "../components/Navbar";
+export default function Monthly() {
+	return (
+		<div>
+			<Navbar />
+			Monthly
+		</div>
+	);
 }
-
-export default Monthly

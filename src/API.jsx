@@ -1,30 +1,22 @@
 import { useEffect, useState } from "react";
 import BarChart from "./components/BarChart";
 import LineChart from "./components/LineChart";
+import { UserContext } from "./App";
+import { useContext } from "react";
 import { useParams } from "react-router";
 import Daily from "./pages/Daily";
 
 export default function API({ url, stockReportData }) {
 	// Use redux to store useStates
-	const [stockReport, setStockReport] = useState(null);
-	const [userData, setUserData] = useState({
-		labels: [],
-		datasets: [
-			{
-				label: "Stock Chart",
-				data: [],
-			},
-		],
-	});
-	const [userVolume, setUserVolume] = useState({
-		labels: [],
-		datasets: [
-			{
-				label: "Stock Chart",
-				data: [],
-			},
-		],
-	});
+
+	const {
+		stockReport,
+		setStockReport,
+		userData,
+		setUserData,
+		userVolume,
+		setUserVolume,
+	} = useContext(UserContext);
 
 	useEffect(() => {
 		if (window.localStorage !== undefined) {
@@ -35,11 +27,11 @@ export default function API({ url, stockReportData }) {
 	}, []);
 	// Line Chart for Open
 	useEffect(() => {
-		if (stockReport !== null && stockReport["Time Series (Daily)"]) {
-			const labels = Object.entries(stockReport["Time Series (Daily)"])
+		if (stockReport !== null && stockReportData) {
+			const labels = Object.entries(stockReportData)
 				.map((data) => data[0])
 				.reverse();
-			const open = Object.entries(stockReport["Time Series (Daily)"])
+			const open = Object.entries(stockReportData)
 				.map((data) => data[1]["1. open"])
 				.reverse();
 
@@ -61,11 +53,11 @@ export default function API({ url, stockReportData }) {
 	// Put a function with the logic inside the useEffect
 	// and pass it through the individual ones with props
 	useEffect(() => {
-		if (stockReport !== null && stockReport["Time Series (Daily)"]) {
-			const labels = Object.entries(stockReport["Time Series (Daily)"])
+		if (stockReport !== null && stockReportData) {
+			const labels = Object.entries(stockReportData)
 				.map((data) => data[0])
 				.reverse();
-			const volume = Object.entries(stockReport["Time Series (Daily)"])
+			const volume = Object.entries(stockReportData)
 				.map((data) => data[1]["5. volume"])
 				.reverse();
 
