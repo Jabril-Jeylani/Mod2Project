@@ -4,9 +4,7 @@ import LineChart from "./components/LineChart";
 import { useParams } from "react-router";
 import Daily from "./pages/Daily";
 
-export default function API({ url }) {
-	let { symbol } = useParams();
-
+export default function API({ url, stockReportData }) {
 	// Use redux to store useStates
 	const [stockReport, setStockReport] = useState(null);
 	const [userData, setUserData] = useState({
@@ -38,12 +36,12 @@ export default function API({ url }) {
 	// Line Chart for Open
 	useEffect(() => {
 		if (stockReport !== null && stockReport["Time Series (Daily)"]) {
-			const labels = Object.entries(stockReport["Time Series (Daily)"]).map(
-				(data) => data[0]
-			);
-			const open = Object.entries(stockReport["Time Series (Daily)"]).map(
-				(data) => data[1]["1. open"]
-			);
+			const labels = Object.entries(stockReport["Time Series (Daily)"])
+				.map((data) => data[0])
+				.reverse();
+			const open = Object.entries(stockReport["Time Series (Daily)"])
+				.map((data) => data[1]["1. open"])
+				.reverse();
 
 			setUserData({
 				labels: labels,
@@ -64,12 +62,12 @@ export default function API({ url }) {
 	// and pass it through the individual ones with props
 	useEffect(() => {
 		if (stockReport !== null && stockReport["Time Series (Daily)"]) {
-			const labels = Object.entries(stockReport["Time Series (Daily)"]).map(
-				(data) => data[0]
-			);
-			const volume = Object.entries(stockReport["Time Series (Daily)"]).map(
-				(data) => data[1]["5. volume"]
-			);
+			const labels = Object.entries(stockReport["Time Series (Daily)"])
+				.map((data) => data[0])
+				.reverse();
+			const volume = Object.entries(stockReport["Time Series (Daily)"])
+				.map((data) => data[1]["5. volume"])
+				.reverse();
 
 			setUserVolume({
 				labels: labels,
