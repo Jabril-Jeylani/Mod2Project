@@ -1,10 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import BarChart from "./components/BarChart";
 import LineChart from "./components/LineChart";
 import { useParams } from "react-router";
+import Daily from "./pages/Daily";
 
-export default function API() {
+export default function API({ url }) {
 	let { symbol } = useParams();
+
 	// Use redux to store useStates
 	const [stockReport, setStockReport] = useState(null);
 	const [userData, setUserData] = useState({
@@ -84,7 +86,7 @@ export default function API() {
 
 	async function fetchStocks() {
 		let key = import.meta.env.REACT_APP_API_KEY;
-		let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${key}`;
+		// let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${key}`;
 		try {
 			const response = await fetch(url);
 			const stockReport = await response.json();
