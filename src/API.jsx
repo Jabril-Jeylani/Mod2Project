@@ -3,12 +3,8 @@ import BarChart from "./components/BarChart";
 import LineChart from "./components/LineChart";
 import { UserContext } from "./App";
 import { useContext } from "react";
-import { useParams } from "react-router";
-import Daily from "./pages/Daily";
 
 export default function API({ url, stockReportData }) {
-	// Use redux to store useStates
-
 	const {
 		stockReport,
 		setStockReport,
@@ -17,6 +13,11 @@ export default function API({ url, stockReportData }) {
 		userVolume,
 		setUserVolume,
 	} = useContext(UserContext);
+
+	// Fetch on Load
+	// useEffect(() => {
+	// 	fetchStocks();
+	// }, []);
 
 	useEffect(() => {
 		if (window.localStorage !== undefined) {
@@ -74,7 +75,7 @@ export default function API({ url, stockReportData }) {
 		}
 	}, [stockReport]);
 
-	async function fetchStocks({ symbol }) {
+	async function fetchStocks() {
 		let key = import.meta.env.REACT_APP_API_KEY;
 		// let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${key}`;
 		try {

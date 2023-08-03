@@ -6,7 +6,9 @@ import { useContext } from "react";
 
 export default function Daily() {
 	const { symbol } = useParams();
-	const { stockReport } = useContext(UserContext);
+	const { stockReport, link } = useContext(UserContext);
+
+	const currentSymbol = link || symbol;
 
 	let key = import.meta.env.REACT_APP_API_KEY;
 
@@ -14,8 +16,8 @@ export default function Daily() {
 		<div>
 			<NavigationBar />
 			<API
-				symbol={symbol}
-				url={`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${key}`}
+				symbol={currentSymbol}
+				url={`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${currentSymbol}&outputsize=compact&apikey=${key}`}
 				stockReportData={stockReport?.["Time Series (Daily)"]}
 			/>
 		</div>

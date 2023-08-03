@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export const UserContext = createContext();
 
 function App(props) {
+	const [link, setLink] = useState("");
 	const [stockReport, setStockReport] = useState(null);
 	const [userData, setUserData] = useState({
 		labels: [],
@@ -41,6 +42,8 @@ function App(props) {
 					setUserData,
 					userVolume,
 					setUserVolume,
+					link,
+					setLink,
 				}}
 			>
 				{props.children}

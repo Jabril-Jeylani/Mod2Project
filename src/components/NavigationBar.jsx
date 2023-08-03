@@ -1,17 +1,19 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Symbol } from "../Symbol";
 import Container from "react-bootstrap/Container";
+import { useContext } from "react";
+import { UserContext } from "../App";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 export default function NavigationBar() {
 	const navigate = useNavigate();
+	const { setLink } = useContext(UserContext);
 	let { symbol } = useParams();
 
-	const onSymbol = (sym) => {
-		symbol = "NDAQ";
-		console.log(symbol);
+	const handleDropdownClick = (symbol) => {
+		setLink(symbol); // Set the selected symbol in the context state
 	};
 
 	return (
@@ -31,17 +33,69 @@ export default function NavigationBar() {
 								title="Dropdown"
 								id="basic-nav-dropdown"
 							>
-								<NavDropdown.Item onSelect={onSymbol}>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Nasdaq}
+									onClick={() => handleDropdownClick(Symbol.Nasdaq)}
+								>
 									{Symbol.Nasdaq}
 								</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Dow}</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Nvidia}</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Apple}</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Microsoft}</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Google}</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Amazon}</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Tesla}</NavDropdown.Item>
-								<NavDropdown.Item>{Symbol.Meta}</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Dow}
+									onClick={() => handleDropdownClick(Symbol.Dow)}
+								>
+									{Symbol.Dow}
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Nvidia}
+									onClick={() => handleDropdownClick(Symbol.Nvidia)}
+								>
+									{Symbol.Nvidia}
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Apple}
+									onClick={() => handleDropdownClick(Symbol.Apple)}
+								>
+									{Symbol.Apple}
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Microsoft}
+									onClick={() => handleDropdownClick(Symbol.Microsoft)}
+								>
+									{Symbol.Microsoft}
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Google}
+									onClick={() => handleDropdownClick(Symbol.Google)}
+								>
+									{Symbol.Google}
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Amazon}
+									onClick={() => handleDropdownClick(Symbol.Amazon)}
+								>
+									{Symbol.Amazon}
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Tesla}
+									onClick={() => handleDropdownClick(Symbol.Tesla)}
+								>
+									{Symbol.Tesla}
+								</NavDropdown.Item>
+								<NavDropdown.Item
+									as={Link}
+									to={"/stock/intraday/" + Symbol.Meta}
+									onClick={() => handleDropdownClick(Symbol.Meta)}
+								>
+									{Symbol.Meta}
+								</NavDropdown.Item>
 								<NavDropdown.Divider />
 								<NavDropdown.Item>About</NavDropdown.Item>
 							</NavDropdown>
@@ -79,38 +133,6 @@ export default function NavigationBar() {
 					</Navbar.Collapse>
 				</Navbar>
 			</Container>
-			{/* <ul className="navbar-ul">
-				<li
-					id="h2id"
-					onClick={() => navigate("/")}
-				>
-					Home
-				</li>
-				<li
-					id="h2id"
-					onClick={() => navigate("/stock/intraday/:symbol")}
-				>
-					Intraday
-				</li>
-				<li
-					id="h2id"
-					onClick={() => navigate("/stock/daily/:symbol")}
-				>
-					Daily
-				</li>
-				<li
-					id="h2id"
-					onClick={() => navigate("/stock/weekly/:symbol")}
-				>
-					Weekly
-				</li>
-				<li
-					id="h2id"
-					onClick={() => navigate("/stock/montly/:symbol")}
-				>
-					Montly
-				</li>
-			</ul> */}
 		</>
 	);
 }

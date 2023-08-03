@@ -6,17 +6,19 @@ import { useContext } from "react";
 
 export default function Intraday() {
 	const { symbol } = useParams();
-	const { stockReport } = useContext(UserContext);
+	const { stockReport, link } = useContext(UserContext);
+
+	const currentSymbol = link || symbol;
 
 	let key = import.meta.env.REACT_APP_API_KEY;
 
-	console.log(symbol);
+	console.log(currentSymbol);
 	return (
 		<div>
 			<NavigationBar />
 			<API
-				symbol={symbol}
-				url={`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&outputsize=compact&apikey=${key}`}
+				symbol={currentSymbol}
+				url={`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${currentSymbol}&interval=5min&outputsize=compact&apikey=${key}`}
 				stockReportData={stockReport?.["Time Series (5min)"]}
 			/>
 		</div>
