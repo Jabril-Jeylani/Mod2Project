@@ -15,6 +15,7 @@ export default function API({ url, stockReportData }) {
 	} = useContext(UserContext);
 
 	// Fetch on Load
+
 	// useEffect(() => {
 	// 	fetchStocks();
 	// }, []);
@@ -118,8 +119,8 @@ export default function API({ url, stockReportData }) {
 	return (
 		<div>
 			{/* buttons to call API and Delete data */}
-			<button onClick={fetchStocks}>Call API</button>
-			<button onClick={deleteStocks}>Delete data</button>
+			{/* <button onClick={fetchStocks}>Call API</button>
+			<button onClick={deleteStocks}>Delete data</button> */}
 			{/* Display Company Meta Data */}
 			{companyInfo()}
 			{/* Render Line and Bar Charts */}
