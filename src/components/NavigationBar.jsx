@@ -18,7 +18,7 @@ export default function NavigationBar() {
 
 	return (
 		<>
-			<Container fluid>
+			<Container>
 				<Navbar
 					expand="lg"
 					bg="dark"
