@@ -74,7 +74,7 @@ export default function API({ url, stockReportData }) {
 		}
 	}, [stockReport]);
 
-	async function fetchStocks() {
+	async function fetchStocks({ symbol }) {
 		let key = import.meta.env.REACT_APP_API_KEY;
 		// let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=compact&apikey=${key}`;
 		try {
