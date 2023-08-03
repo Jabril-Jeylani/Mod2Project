@@ -16,9 +16,9 @@ export default function API({ url, stockReportData }) {
 
 	// Fetch on Load
 
-	// useEffect(() => {
-	// 	fetchStocks();
-	// }, []);
+	useEffect(() => {
+		fetchStocks();
+	}, []);
 
 	useEffect(() => {
 		if (window.localStorage !== undefined) {
@@ -128,7 +128,7 @@ export default function API({ url, stockReportData }) {
 				{userData.labels.length > 0 && ( // Only render if userData has data
 					<div
 						className="linechart"
-						style={{ width: 1200, borderColor: "green" }}
+						style={{ width: 1100, borderColor: "green" }}
 					>
 						<LineChart chartData={userData} />
 					</div>
@@ -136,7 +136,7 @@ export default function API({ url, stockReportData }) {
 				{userData.labels.length > 0 && ( // Only render if userData has data
 					<div
 						className="barchart"
-						style={{ width: 1200 }}
+						style={{ width: 1100 }}
 					>
 						<BarChart chartData={userVolume} />
 					</div>
