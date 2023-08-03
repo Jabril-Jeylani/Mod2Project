@@ -25,12 +25,12 @@ export default function NavigationBar() {
 					data-bs-theme="dark"
 					className="bg-body-tertiary"
 				>
-					<Navbar.Brand>Stocks</Navbar.Brand>
+					<Navbar.Brand>Stock Market</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="me-auto">
 							<NavDropdown
-								title="Dropdown"
+								title="Select a Stock"
 								id="basic-nav-dropdown"
 							>
 								<NavDropdown.Item
