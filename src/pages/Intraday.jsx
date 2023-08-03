@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import NavigationBar from "../components/NavigationBar";
 import API from "../API";
 import { UserContext } from "../App";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ export default function Intraday() {
 	console.log(symbol);
 	return (
 		<div>
-			<Navbar />
+			<NavigationBar />
 			<API
 				symbol={symbol}
 				url={`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&outputsize=compact&apikey=${key}`}

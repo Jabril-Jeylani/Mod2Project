@@ -1,7 +1,7 @@
 .dataCharts {
 	display: grid;
 }
-.navbar-selection {
+/* .navbar-selection {
 	display: flex;
 	margin: 8px;
 }
@@ -28,4 +28,4 @@
 
 #h2id:hover {
 	background-color: black;
-}
+} */

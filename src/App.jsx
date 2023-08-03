@@ -6,6 +6,7 @@ import Daily from "./pages/Daily";
 import Intraday from "./pages/Intraday";
 import Weekly from "./pages/Weekly";
 import Monthly from "./pages/Monthly";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const UserContext = createContext();
 
