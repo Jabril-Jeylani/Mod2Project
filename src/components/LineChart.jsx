@@ -6,7 +6,11 @@ const LineChart = ({ chartData }) => {
 		return <div>No data available for LineChart</div>;
 	}
 
-	return <Line data={chartData} />;
+	return (
+		<div>
+			<Line data={chartData} />
+		</div>
+	);
 };
 
 export default LineChart;

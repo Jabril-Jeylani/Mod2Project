@@ -6,6 +6,7 @@ import Daily from "./pages/Daily";
 import Intraday from "./pages/Intraday";
 import Weekly from "./pages/Weekly";
 import Monthly from "./pages/Monthly";
+import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const UserContext = createContext();
@@ -17,6 +18,7 @@ function App(props) {
 		labels: [],
 		datasets: [
 			{
+				maintainAspectRatio: false,
 				label: "Stock Chart",
 				data: [],
 			},
@@ -34,44 +36,52 @@ function App(props) {
 
 	return (
 		<>
-			<UserContext.Provider
-				value={{
-					stockReport,
-					setStockReport,
-					userData,
-					setUserData,
-					userVolume,
-					setUserVolume,
-					link,
-					setLink,
-				}}
-			>
-				{props.children}
-				<div className="app">
-					<Routes>
-						<Route
-							path="/"
-							element={<Homepage />}
-						/>
-						<Route
-							path="stock/intraday/:symbol"
-							element={<Intraday />}
-						/>
-						<Route
-							path="stock/daily/:symbol"
-							element={<Daily />}
-						/>
-						<Route
-							path="stock/weekly/:symbol"
-							element={<Weekly />}
-						/>
-						<Route
-							path="stock/montly/:symbol"
-							element={<Monthly />}
-						/>
-					</Routes>
-				</div>
-			</UserContext.Provider>
+			<div style={{ width: "100%" }}>
+				<Container
+					className="p-3 mb-2 bg-dark bg-gradient text-white"
+					fluid
+					bg="dark"
+					data-bs-theme="dark"
+				>
+					<UserContext.Provider
+						value={{
+							stockReport,
+							setStockReport,
+							userData,
+							setUserData,
+							userVolume,
+							setUserVolume,
+							link,
+							setLink,
+						}}
+					>
+						{props.children}
+
+						<Routes>
+							<Route
+								path="/"
+								element={<Homepage />}
+							/>
+							<Route
+								path="stock/intraday/:symbol"
+								element={<Intraday />}
+							/>
+							<Route
+								path="stock/daily/:symbol"
+								element={<Daily />}
+							/>
+							<Route
+								path="stock/weekly/:symbol"
+								element={<Weekly />}
+							/>
+							<Route
+								path="stock/montly/:symbol"
+								element={<Monthly />}
+							/>
+						</Routes>
+					</UserContext.Provider>
+				</Container>
+			</div>
 		</>
 	);
 }

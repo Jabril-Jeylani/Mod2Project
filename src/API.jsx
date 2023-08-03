@@ -116,6 +116,7 @@ export default function API({ url, stockReportData }) {
 			return null;
 		}
 	};
+
 	return (
 		<div>
 			{/* buttons to call API and Delete data */}
@@ -128,7 +129,11 @@ export default function API({ url, stockReportData }) {
 				{userData.labels.length > 0 && ( // Only render if userData has data
 					<div
 						className="linechart"
-						style={{ width: 1100, borderColor: "green" }}
+						style={{
+							width: 1100,
+
+							borderColor: "green",
+						}}
 					>
 						<LineChart chartData={userData} />
 					</div>

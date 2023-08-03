@@ -9,9 +9,12 @@ export default function Homepage() {
 
 	let key = import.meta.env.REACT_APP_API_KEY;
 	return (
-		<div className="p-3 mb-2 bg-dark bg-gradient text-white">
+		<Container
+			className="p-3 mb-2 bg-dark bg-gradient text-white"
+			fluid="xl"
+		>
 			<Container
-				fluid="md"
+				className="p-3 mb-2 bg-dark bg-gradient text-white"
 				bg="dark"
 				data-bs-theme="dark"
 			>
@@ -23,6 +26,6 @@ export default function Homepage() {
 					/>
 				</Container>
 			</Container>
-		</div>
+		</Container>
 	);
 }

@@ -16,6 +16,7 @@ export default function Daily() {
 	return (
 		<div className="p-3 mb-2 bg-dark bg-gradient text-white">
 			<Container
+				className="p-3 mb-2 bg-dark bg-gradient text-white"
 				fluid="md"
 				bg="dark"
 				data-bs-theme="dark"
