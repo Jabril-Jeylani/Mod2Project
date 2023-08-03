@@ -22,5 +22,6 @@ Using Vite, run `npm install` in your terminal.
 ## Unsolved Problems 🔴
 I wanted to implement a search bar where you could go to any stock using its ticker symbol and see it's graph.
 Currently, that functionality exists because of the API used, but you have to manaully type the symbol into the URL.
+I also want to make ChartJS work with responsive charts, which it can do with certain workarounds.
 
 
