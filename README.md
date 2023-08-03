@@ -14,7 +14,7 @@ Using ChartJS, the process of drawing and animating the line and bar charts was 
 I then at the end used React Bootstrap to style my site and add a consistent and cohesive design. 
 
 ## Link to Live Site 🟡 
-[Netlify](https://jabril-jeylani.netlify.app)
+[Netlify Link](https://jabril-jeylani.netlify.app)
 
 ## Installation Instructions 🟠 
 Using Vite, run `npm install` in your terminal.
