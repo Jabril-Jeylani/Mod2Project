@@ -3,6 +3,8 @@ import BarChart from "./components/BarChart";
 import LineChart from "./components/LineChart";
 import { UserContext } from "./App";
 import { useContext } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+
 
 export default function API({ url, stockReportData }) {
 	const {
@@ -119,19 +121,21 @@ export default function API({ url, stockReportData }) {
 
 	return (
 		<div>
+			<Container >
+				<Row >
 			{/* buttons to call API and Delete data */}
 			{/* <button onClick={fetchStocks}>Call API</button>
 			<button onClick={deleteStocks}>Delete data</button> */}
 			{/* Display Company Meta Data */}
 			{companyInfo()}
 			{/* Render Line and Bar Charts */}
+			<Col xs={12} md={6}>
 			<div className="dataCharts">
 				{userData.labels.length > 0 && ( // Only render if userData has data
-					<div
+					<div 
 						className="linechart"
 						style={{
 							width: 1100,
-
 							borderColor: "green",
 						}}
 					>
@@ -147,6 +151,9 @@ export default function API({ url, stockReportData }) {
 					</div>
 				)}
 			</div>
+			</Col>
+			</Row>
+			</Container>
 		</div>
 	);
 }

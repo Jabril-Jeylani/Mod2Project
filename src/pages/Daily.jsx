@@ -15,21 +15,15 @@ export default function Daily() {
 
 	return (
 		<div className="p-3 mb-2 bg-dark bg-gradient text-white">
-			<Container
-				className="p-3 mb-2 bg-dark bg-gradient text-white"
-				fluid="md"
-				bg="dark"
-				data-bs-theme="dark"
-			>
+
 				<NavigationBar />
-				<Container fluid>
+
 					<API
 						symbol={currentSymbol}
 						url={`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${currentSymbol}&outputsize=compact&apikey=${key}`}
 						stockReportData={stockReport?.["Time Series (Daily)"]}
 					/>
-				</Container>
-			</Container>
+
 		</div>
 	);
 }

@@ -15,20 +15,16 @@ export default function Monthly() {
 
 	return (
 		<div className="p-3 mb-2 bg-dark bg-gradient text-white">
-			<Container
-				fluid="md"
-				bg="dark"
-				data-bs-theme="dark"
-			>
+			
 				<NavigationBar />
-				<Container fluid>
+				
 					<API
 						symbol={currentSymbol}
 						url={`https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${currentSymbol}&outputsize=compact&apikey=${key}`}
 						stockReportData={stockReport?.["Monthly Time Series"]}
 					/>
-				</Container>
-			</Container>
+				
+			
 		</div>
 	);
 }

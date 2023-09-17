@@ -6,7 +6,6 @@ import Daily from "./pages/Daily";
 import Intraday from "./pages/Intraday";
 import Weekly from "./pages/Weekly";
 import Monthly from "./pages/Monthly";
-import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const UserContext = createContext();
@@ -29,6 +28,7 @@ function App(props) {
 		datasets: [
 			{
 				label: "Stock Chart",
+				maintainAspectRatio: false,
 				data: [],
 			},
 		],
@@ -36,13 +36,8 @@ function App(props) {
 
 	return (
 		<>
-			<div style={{ width: "100%" }}>
-				<Container
-					className="p-3 mb-2 bg-dark bg-gradient text-white"
-					fluid
-					bg="dark"
-					data-bs-theme="dark"
-				>
+			<div >
+				
 					<UserContext.Provider
 						value={{
 							stockReport,
@@ -80,7 +75,7 @@ function App(props) {
 							/>
 						</Routes>
 					</UserContext.Provider>
-				</Container>
+				
 			</div>
 		</>
 	);

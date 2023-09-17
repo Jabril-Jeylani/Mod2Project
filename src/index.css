@@ -1,42 +1,13 @@
-html,
-body,
-#root {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-/* .dataCharts {
-	display: grid;
-}
- */
-
-/* .navbar-selection {
-	display: flex;
-	margin: 8px;
-}
-
-.navbar-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: lightgrey;
-}
-
-#h2id {
-	float: left;
-}
-
-#h2id {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-#h2id:hover {
-	background-color: black;
-} */
+@media (max-width: 767px) {
+    .linechart {
+      /* Customize chart container styles for small screens */
+      width: 100%;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .linechart {
+      /* Customize chart container styles for medium screens */
+      width: 80%;
+    }
+  }

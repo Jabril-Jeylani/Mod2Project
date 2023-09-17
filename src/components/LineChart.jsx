@@ -7,7 +7,7 @@ const LineChart = ({ chartData }) => {
 	}
 
 	return (
-		<div>
+		<div > 
 			<Line data={chartData} />
 		</div>
 	);

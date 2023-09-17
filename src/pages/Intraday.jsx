@@ -15,21 +15,17 @@ export default function Intraday() {
 
 	console.log(currentSymbol);
 	return (
-		<div className="p-3 mb-2 bg-dark bg-gradient text-white">
-			<Container
-				fluid="md"
-				bg="dark"
-				data-bs-theme="dark"
-			>
+		<div className="bg-dark bg-gradient text-white">
+
 				<NavigationBar />
-				<Container fluid>
+				
 					<API
 						symbol={currentSymbol}
 						url={`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${currentSymbol}&interval=5min&outputsize=compact&apikey=${key}`}
 						stockReportData={stockReport?.["Time Series (5min)"]}
 					/>
-				</Container>
-			</Container>
+				
+
 		</div>
 	);
 }

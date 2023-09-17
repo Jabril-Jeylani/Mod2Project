@@ -13,17 +13,18 @@ export default function NavigationBar() {
 	let { symbol } = useParams();
 
 	const handleDropdownClick = (symbol) => {
-		setLink(symbol); // Set the selected symbol in the context state
+		setLink(symbol); // Set the symbol
 	};
 
 	return (
 		<>
-			<Container>
+	
 				<Navbar
 					expand="lg"
 					bg="dark"
 					data-bs-theme="dark"
-					className="bg-body-tertiary"
+					className="bg-body-tertiary" 
+					
 				>
 					<Navbar.Brand>Stock Market</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -132,7 +133,6 @@ export default function NavigationBar() {
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
-			</Container>
 		</>
 	);
 }
