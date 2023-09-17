@@ -14,7 +14,7 @@ export default function Weekly() {
 	let key = import.meta.env.REACT_APP_API_KEY;
 
 	return (
-		<div className="p-3 mb-2 bg-dark bg-gradient text-white">
+		<div className="bg-dark bg-gradient text-white" style={{ minHeight: "100vh" }}>
 			
 				<NavigationBar />
 				

@@ -14,7 +14,7 @@ export default function Monthly() {
 	let key = import.meta.env.REACT_APP_API_KEY;
 
 	return (
-		<div >
+		<div className="bg-dark bg-gradient text-white" style={{ minHeight: "100vh" }}>
 			
 				<NavigationBar />
 				

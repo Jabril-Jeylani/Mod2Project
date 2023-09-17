@@ -9,7 +9,7 @@ const BarChart = ({ chartData }) => {
 	return (
 		<Bar
 			width={300}
-			height={300}
+			height={400}
 			options={{ maintainAspectRatio: false }}
 			data={chartData}
 		/>

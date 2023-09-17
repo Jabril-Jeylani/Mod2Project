@@ -15,7 +15,7 @@ export default function Intraday() {
 
 	console.log(currentSymbol);
 	return (
-		<div className="bg-dark bg-gradient text-white">
+		<div className="bg-dark bg-gradient text-white" style={{ minHeight: "100vh" }}>
 
 				<NavigationBar />
 				
