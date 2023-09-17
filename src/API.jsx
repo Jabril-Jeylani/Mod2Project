@@ -19,7 +19,7 @@ export default function API({ url, stockReportData }) {
 	// Fetch on Load
 
 	useEffect(() => {
-		fetchStocks();
+		// fetchStocks();
 	}, []);
 
 	useEffect(() => {
@@ -120,22 +120,21 @@ export default function API({ url, stockReportData }) {
 	};
 
 	return (
-		<div>
-			<Container >
-				<Row >
+		<div >
+			<Container>
 			{/* buttons to call API and Delete data */}
-			{/* <button onClick={fetchStocks}>Call API</button>
-			<button onClick={deleteStocks}>Delete data</button> */}
+			<button onClick={fetchStocks}>Call API</button>
+			<button onClick={deleteStocks}>Delete data</button>
 			{/* Display Company Meta Data */}
 			{companyInfo()}
 			{/* Render Line and Bar Charts */}
-			<Col xs={12} md={6}>
+			
 			<div className="dataCharts">
 				{userData.labels.length > 0 && ( // Only render if userData has data
 					<div 
 						className="linechart"
 						style={{
-							width: 1100,
+							
 							borderColor: "green",
 						}}
 					>
@@ -145,14 +144,13 @@ export default function API({ url, stockReportData }) {
 				{userData.labels.length > 0 && ( // Only render if userData has data
 					<div
 						className="barchart"
-						style={{ width: 1100 }}
+						
 					>
 						<BarChart chartData={userVolume} />
 					</div>
 				)}
 			</div>
-			</Col>
-			</Row>
+			
 			</Container>
 		</div>
 	);

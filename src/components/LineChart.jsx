@@ -8,9 +8,13 @@ const LineChart = ({ chartData }) => {
 
 	return (
 		<div > 
-			<Line data={chartData} />
+			<Line width={300}
+			height={300}
+			options={{maintainAspectRatio: false}}
+			data={chartData} />
 		</div>
 	);
 };
 
 export default LineChart;
+

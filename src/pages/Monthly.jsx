@@ -14,7 +14,7 @@ export default function Monthly() {
 	let key = import.meta.env.REACT_APP_API_KEY;
 
 	return (
-		<div className="p-3 mb-2 bg-dark bg-gradient text-white">
+		<div >
 			
 				<NavigationBar />
 				
@@ -24,7 +24,7 @@ export default function Monthly() {
 						stockReportData={stockReport?.["Monthly Time Series"]}
 					/>
 				
-			
+				
 		</div>
 	);
 }

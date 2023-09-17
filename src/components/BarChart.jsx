@@ -6,7 +6,14 @@ const BarChart = ({ chartData }) => {
 		return <div>No data available for BarChart</div>;
 	}
 
-	return <Bar data={chartData} />;
+	return (
+		<Bar
+			width={300}
+			height={300}
+			options={{ maintainAspectRatio: false }}
+			data={chartData}
+		/>
+	);
 };
 
 export default BarChart;

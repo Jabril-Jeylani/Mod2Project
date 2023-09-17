@@ -17,7 +17,6 @@ function App(props) {
 		labels: [],
 		datasets: [
 			{
-				maintainAspectRatio: false,
 				label: "Stock Chart",
 				data: [],
 			},
@@ -28,7 +27,6 @@ function App(props) {
 		datasets: [
 			{
 				label: "Stock Chart",
-				maintainAspectRatio: false,
 				data: [],
 			},
 		],
@@ -36,7 +34,7 @@ function App(props) {
 
 	return (
 		<>
-			<div >
+			<div>
 				
 					<UserContext.Provider
 						value={{
